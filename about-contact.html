@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolBhai - About & Contact</title>
+
+<meta name="description" content="About ToolBhai and contact support. Free online utility tools platform.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+<style>
+body{
+font-family:'Geist',sans-serif;
+}
+
+.glass{
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.input-style{
+background:#1e293b;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.input-style:focus{
+outline:none;
+border-color:#3b82f6;
+box-shadow:0 0 0 3px rgba(59,130,246,0.15);
+}
+
+.fade-up{
+animation:fadeUp .5s ease;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+</style>
+</head>
+
+<body class="bg-[#0f172a] text-white min-h-screen pb-24">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-[#0f172a]/90 backdrop-blur-md border-b border-white/10 h-16 flex items-center justify-between px-4">
+
+<div class="flex items-center gap-3">
+<a href="index.html" class="p-2 rounded-full hover:bg-white/5">
+<span class="material-icons-outlined">arrow_back</span>
+</a>
+
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold">
+T
+</div>
+
+<span class="text-xl font-bold">
+ToolBhai
+</span>
+</div>
+</div>
+
+<a href="index.html" class="text-sm text-blue-400 font-medium">
+Home
+</a>
+
+</header>
+
+<main class="max-w-lg mx-auto px-4 py-6 space-y-8 fade-up">
+
+<!-- AD -->
+<div class="glass rounded-2xl p-4 text-center text-xs text-slate-500 uppercase tracking-widest">
+Adsterra Header Banner Ad
+</div>
+
+<!-- HERO -->
+<section class="text-center py-4">
+<div class="w-20 h-20 mx-auto bg-blue-600/20 text-blue-500 rounded-3xl flex items-center justify-center mb-4">
+<span class="material-icons-outlined text-5xl">hub</span>
+</div>
+
+<h1 class="text-3xl font-black mb-3">
+About ToolBhai
+</h1>
+
+<p class="text-slate-400 leading-relaxed text-sm">
+ToolBhai is a fast, mobile-first collection of free online utility tools built for creators, students, developers, and everyday users.
+All tools work directly inside your browser with zero signup required.
+</p>
+</section>
+
+<!-- ABOUT CARD -->
+<section class="glass rounded-3xl p-6 space-y-5">
+
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-blue-600/20 text-blue-500 flex items-center justify-center">
+<span class="material-icons-outlined">bolt</span>
+</div>
+
+<div>
+<h2 class="font-bold text-lg">
+Why ToolBhai?
+</h2>
+
+<p class="text-sm text-slate-400">
+Fast • Free • Privacy Focused
+</p>
+</div>
+</div>
+
+<div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+
+<div class="flex gap-3">
+<span class="material-icons-outlined text-green-500">check_circle</span>
+<p>100% browser-based tools with no server uploads.</p>
+</div>
+
+<div class="flex gap-3">
+<span class="material-icons-outlined text-green-500">check_circle</span>
+<p>Optimized for Android phones and mobile browsers.</p>
+</div>
+
+<div class="flex gap-3">
+<span class="material-icons-outlined text-green-500">check_circle</span>
+<p>Simple modern UI with fast loading speed.</p>
+</div>
+
+<div class="flex gap-3">
+<span class="material-icons-outlined text-green-500">check_circle</span>
+<p>SEO friendly structure ready for Vercel and Firebase deployment.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+<section class="grid grid-cols-3 gap-3">
+
+<div class="glass rounded-2xl p-4 text-center">
+<div class="text-2xl font-black text-blue-400">
+7+
+</div>
+<p class="text-[11px] text-slate-500 uppercase mt-1">
+Tools
+</p>
+</div>
+
+<div class="glass rounded-2xl p-4 text-center">
+<div class="text-2xl font-black text-green-400">
+100%
+</div>
+<p class="text-[11px] text-slate-500 uppercase mt-1">
+Free
+</p>
+</div>
+
+<div class="glass rounded-2xl p-4 text-center">
+<div class="text-2xl font-black text-pink-400">
+Fast
+</div>
+<p class="text-[11px] text-slate-500 uppercase mt-1">
+Mobile UI
+</p>
+</div>
+
+</section>
+
+<!-- AD -->
+<div class="glass rounded-2xl p-4 text-center text-xs text-slate-500 uppercase tracking-widest">
+Adsterra Native Ad Section
+</div>
+
+<!-- CONTACT -->
+<section class="glass rounded-3xl p-6 space-y-6">
+
+<div>
+<h2 class="text-2xl font-bold mb-2">
+Contact Us
+</h2>
+
+<p class="text-sm text-slate-400">
+Have suggestions, issues, or business inquiries? Send us a message.
+</p>
+</div>
+
+<form id="contactForm" class="space-y-4">
+
+<div>
+<label class="block text-sm mb-2 text-slate-400">
+Your Name
+</label>
+
+<input
+type="text"
+id="name"
+placeholder="Enter your name"
+class="w-full input-style rounded-2xl px-4 py-4 text-white"
+/>
+</div>
+
+<div>
+<label class="block text-sm mb-2 text-slate-400">
+Email Address
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="you@example.com"
+class="w-full input-style rounded-2xl px-4 py-4 text-white"
+/>
+</div>
+
+<div>
+<label class="block text-sm mb-2 text-slate-400">
+Message
+</label>
+
+<textarea
+id="message"
+rows="5"
+placeholder="Write your message..."
+class="w-full input-style rounded-2xl px-4 py-4 text-white resize-none"
+></textarea>
+</div>
+
+<button
+type="submit"
+class="w-full bg-blue-600 hover:bg-blue-700 transition-all active:scale-95 py-4 rounded-2xl font-bold flex items-center justify-center gap-2"
+>
+
+<span class="material-icons-outlined">
+send
+</span>
+
+Send Message
+
+</button>
+
+</form>
+
+</section>
+
+<!-- CONTACT INFO -->
+<section class="glass rounded-3xl p-6 space-y-5">
+
+<div class="flex items-center gap-4">
+
+<div class="w-12 h-12 rounded-2xl bg-purple-600/20 text-purple-400 flex items-center justify-center">
+<span class="material-icons-outlined">mail</span>
+</div>
+
+<div>
+<p class="text-sm text-slate-400">
+Support Email
+</p>
+
+<p class="font-bold">
+support@toolbhai.com
+</p>
+</div>
+
+</div>
+
+<div class="flex items-center gap-4">
+
+<div class="w-12 h-12 rounded-2xl bg-green-600/20 text-green-400 flex items-center justify-center">
+<span class="material-icons-outlined">public</span>
+</div>
+
+<div>
+<p class="text-sm text-slate-400">
+Website
+</p>
+
+<p class="font-bold">
+www.toolbhai.com
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER AD -->
+<div class="glass rounded-2xl p-4 text-center text-xs text-slate-500 uppercase tracking-widest">
+Adsterra Footer Banner Ad
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/10 bg-[#0a101f] px-4 py-10 mt-10">
+
+<div class="max-w-lg mx-auto text-center">
+
+<div class="flex items-center justify-center gap-2 mb-4">
+
+<div class="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center font-bold">
+T
+</div>
+
+<span class="font-bold text-lg">
+ToolBhai
+</span>
+
+</div>
+
+<p class="text-sm text-slate-500 leading-relaxed mb-6">
+Fast and free online utility tools platform for everyone.
+</p>
+
+<div class="flex justify-center gap-5 text-sm text-slate-400 mb-6">
+<a href="index.html" class="hover:text-white">Home</a>
+<a href="privacy.html" class="hover:text-white">Privacy</a>
+<a href="about-contact.html" class="hover:text-white">Contact</a>
+</div>
+
+<p class="text-xs text-slate-600">
+© 2024 ToolBhai. All rights reserved.
+</p>
+
+</div>
+
+</footer>
+
+<!-- BOTTOM NAV -->
+<nav class="fixed bottom-0 left-0 right-0 bg-[#0f172a]/95 backdrop-blur-lg border-t border-white/10 px-8 py-3 flex justify-between items-center z-50">
+
+<a href="index.html" class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-icons-outlined">home</span>
+<span class="text-[10px]">Home</span>
+</a>
+
+<a href="qr-generator.html" class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-icons-outlined">qr_code_2</span>
+<span class="text-[10px]">QR</span>
+</a>
+
+<a href="word-counter.html" class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-icons-outlined">notes</span>
+<span class="text-[10px]">Tools</span>
+</a>
+
+<a href="#" class="flex flex-col items-center gap-1 text-blue-500">
+<span class="material-icons-outlined">mail</span>
+<span class="text-[10px] font-bold">Contact</span>
+</a>
+
+</nav>
+
+<!-- SUCCESS TOAST -->
+<div id="toast" class="fixed bottom-28 left-1/2 -translate-x-1/2 bg-blue-600 px-6 py-3 rounded-full text-sm font-bold opacity-0 transition-all duration-300 pointer-events-none">
+Message Sent Successfully
+</div>
+
+<script>
+
+const form = document.getElementById('contactForm');
+
+form.addEventListener('submit',function(e){
+
+e.preventDefault();
+
+const name=document.getElementById('name').value.trim();
+const email=document.getElementById('email').value.trim();
+const message=document.getElementById('message').value.trim();
+
+if(name==='' || email==='' || message===''){
+alert('Please fill all fields');
+return;
+}
+
+showToast();
+
+form.reset();
+
+});
+
+function showToast(){
+
+const toast=document.getElementById('toast');
+
+toast.style.opacity='1';
+toast.style.bottom='100px';
+
+setTimeout(()=>{
+toast.style.opacity='0';
+toast.style.bottom='90px';
+},2500);
+
+}
+
+</script>
+
+</body>
+  </html>
