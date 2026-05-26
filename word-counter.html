@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolBhai - Word Counter</title>
+
+<meta name="description" content="Free online word counter tool by ToolBhai. Count words, characters, sentences, paragraphs and reading time instantly.">
+<meta name="keywords" content="word counter, character counter, text analyzer, ToolBhai">
+<meta name="robots" content="index, follow">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+<style>
+body{
+font-family:'Inter',sans-serif;
+background:#0f172a;
+}
+
+textarea::-webkit-scrollbar{
+width:6px;
+}
+
+textarea::-webkit-scrollbar-thumb{
+background:#334155;
+border-radius:10px;
+}
+
+.glass{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.fade{
+animation:fade .25s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(8px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+</style>
+</head>
+
+<body class="text-white min-h-screen pb-24">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-[#0f172a]/90 backdrop-blur-lg border-b border-white/10">
+<div class="max-w-3xl mx-auto px-4 h-16 flex items-center justify-between">
+
+<div class="flex items-center gap-3">
+<a href="index.html" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition">
+<span class="material-icons-outlined">arrow_back</span>
+</a>
+
+<div>
+<h1 class="font-bold text-lg">Word Counter</h1>
+<p class="text-xs text-slate-400">ToolBhai Text Analyzer</p>
+</div>
+</div>
+
+<button onclick="clearText()" class="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center hover:bg-red-500/20 transition">
+<span class="material-icons-outlined">delete</span>
+</button>
+
+</div>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 py-6">
+
+<!-- AD -->
+<div class="glass rounded-2xl p-4 text-center text-slate-500 text-xs uppercase tracking-[3px] mb-6">
+Adsterra Header Banner Ad
+</div>
+
+<!-- TEXTAREA -->
+<div class="glass rounded-3xl p-4 fade">
+
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-semibold text-lg">Enter Your Text</h2>
+
+<button onclick="copyText()" id="copyBtn" class="bg-blue-600 hover:bg-blue-700 transition px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2">
+<span class="material-icons-outlined text-base">content_copy</span>
+Copy
+</button>
+</div>
+
+<textarea
+id="textInput"
+placeholder="Start typing or paste your content here..."
+class="w-full h-72 bg-[#020617] border border-white/10 rounded-2xl p-4 text-slate-200 placeholder:text-slate-500 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+></textarea>
+
+</div>
+
+<!-- STATS -->
+<div class="grid grid-cols-2 gap-4 mt-6 fade">
+
+<div class="glass rounded-3xl p-5">
+<p class="text-slate-400 text-sm mb-2">Words</p>
+<h3 id="wordCount" class="text-3xl font-black text-blue-400">0</h3>
+</div>
+
+<div class="glass rounded-3xl p-5">
+<p class="text-slate-400 text-sm mb-2">Characters</p>
+<h3 id="charCount" class="text-3xl font-black text-green-400">0</h3>
+</div>
+
+<div class="glass rounded-3xl p-5">
+<p class="text-slate-400 text-sm mb-2">Sentences</p>
+<h3 id="sentenceCount" class="text-3xl font-black text-yellow-400">0</h3>
+</div>
+
+<div class="glass rounded-3xl p-5">
+<p class="text-slate-400 text-sm mb-2">Paragraphs</p>
+<h3 id="paragraphCount" class="text-3xl font-black text-pink-400">0</h3>
+</div>
+
+</div>
+
+<!-- EXTRA STATS -->
+<div class="glass rounded-3xl p-6 mt-6 fade">
+
+<h3 class="font-bold text-lg mb-5">Reading Insights</h3>
+
+<div class="space-y-4">
+
+<div class="flex items-center justify-between">
+<p class="text-slate-400">Reading Time</p>
+<p id="readingTime" class="font-bold text-blue-400">0 min</p>
+</div>
+
+<div class="flex items-center justify-between">
+<p class="text-slate-400">Characters (No Spaces)</p>
+<p id="charNoSpace" class="font-bold">0</p>
+</div>
+
+<div class="flex items-center justify-between">
+<p class="text-slate-400">Average Word Length</p>
+<p id="avgWord" class="font-bold">0</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- AD -->
+<div class="glass rounded-2xl p-6 text-center text-slate-500 text-xs uppercase tracking-[3px] mt-6">
+Adsterra Native Ad Space
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="mt-10 border-t border-white/10 bg-[#020617]">
+<div class="max-w-3xl mx-auto px-4 py-10 text-center">
+
+<div class="flex justify-center items-center gap-2 mb-4">
+<div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-black">
+T
+</div>
+<h2 class="font-bold text-lg">ToolBhai</h2>
+</div>
+
+<p class="text-slate-500 text-sm">
+Fast • Mobile Friendly • Privacy Focused
+</p>
+
+<div class="mt-6 text-slate-600 text-xs">
+© 2024 ToolBhai. All rights reserved.
+</div>
+
+</div>
+</footer>
+
+<!-- BOTTOM NAV -->
+<nav class="fixed bottom-0 left-0 right-0 bg-[#020617]/95 backdrop-blur-lg border-t border-white/10">
+<div class="max-w-lg mx-auto flex justify-around py-3">
+
+<a href="index.html" class="flex flex-col items-center text-slate-400 text-xs">
+<span class="material-icons-outlined">home</span>
+Home
+</a>
+
+<a href="qr-generator.html" class="flex flex-col items-center text-slate-400 text-xs">
+<span class="material-icons-outlined">qr_code_2</span>
+QR
+</a>
+
+<a href="word-counter.html" class="flex flex-col items-center text-blue-400 text-xs">
+<span class="material-icons-outlined">article</span>
+Counter
+</a>
+
+<a href="about-contact.html" class="flex flex-col items-center text-slate-400 text-xs">
+<span class="material-icons-outlined">mail</span>
+Contact
+</a>
+
+</div>
+</nav>
+
+<script>
+
+const textInput=document.getElementById("textInput");
+
+const wordCount=document.getElementById("wordCount");
+const charCount=document.getElementById("charCount");
+const sentenceCount=document.getElementById("sentenceCount");
+const paragraphCount=document.getElementById("paragraphCount");
+
+const readingTime=document.getElementById("readingTime");
+const charNoSpace=document.getElementById("charNoSpace");
+const avgWord=document.getElementById("avgWord");
+
+textInput.addEventListener("input",updateStats);
+
+function updateStats(){
+
+const text=textInput.value;
+
+const words=text.trim().length>0
+?text.trim().split(/\s+/).length
+:0;
+
+const chars=text.length;
+
+const sentences=text.split(/[.!?]+/).filter(sentence=>sentence.trim().length>0).length;
+
+const paragraphs=text.split(/\n+/).filter(paragraph=>paragraph.trim().length>0).length;
+
+const charsWithoutSpaces=text.replace(/\s/g,'').length;
+
+const averageWord=words>0
+?(charsWithoutSpaces/words).toFixed(1)
+:0;
+
+const readMinutes=Math.max(1,Math.ceil(words/200));
+
+wordCount.innerText=words.toLocaleString();
+charCount.innerText=chars.toLocaleString();
+sentenceCount.innerText=sentences.toLocaleString();
+paragraphCount.innerText=paragraphs.toLocaleString();
+
+readingTime.innerText=readMinutes+" min";
+charNoSpace.innerText=charsWithoutSpaces.toLocaleString();
+avgWord.innerText=averageWord;
+
+}
+
+function clearText(){
+
+if(confirm("Clear all text?")){
+
+textInput.value="";
+updateStats();
+
+}
+
+}
+
+async function copyText(){
+
+if(!textInput.value.trim()) return;
+
+try{
+
+await navigator.clipboard.writeText(textInput.value);
+
+const btn=document.getElementById("copyBtn");
+
+btn.innerHTML='<span class="material-icons-outlined text-base">check</span>Copied';
+
+btn.classList.remove("bg-blue-600");
+btn.classList.add("bg-green-600");
+
+setTimeout(()=>{
+
+btn.innerHTML='<span class="material-icons-outlined text-base">content_copy</span>Copy';
+
+btn.classList.remove("bg-green-600");
+btn.classList.add("bg-blue-600");
+
+},2000);
+
+}catch(err){
+
+alert("Copy failed");
+
+}
+
+}
+
+updateStats();
+
+</script>
+
+</body>
+</html>
