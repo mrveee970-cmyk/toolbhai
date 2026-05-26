@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ToolBhai - Age Calculator</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+background:#0f172a;
+font-family:Arial,sans-serif;
+color:white;
+}
+</style>
+
+</head>
+
+<body class="min-h-screen">
+
+<header class="p-4 border-b border-gray-700 flex justify-between items-center">
+
+<h1 class="text-2xl font-bold text-yellow-400">
+ToolBhai
+</h1>
+
+<a href="index.html" class="bg-yellow-500 text-black px-4 py-2 rounded-lg font-bold">
+Home
+</a>
+
+</header>
+
+<div class="max-w-md mx-auto p-4">
+
+<h2 class="text-3xl font-bold mt-6 mb-2">
+Age Calculator
+</h2>
+
+<p class="text-gray-400 mb-6">
+Calculate your exact age instantly.
+</p>
+
+<div class="bg-slate-800 p-5 rounded-2xl">
+
+<label class="block mb-2">
+Select Your Date of Birth
+</label>
+
+<input
+type="date"
+id="dob"
+class="w-full p-3 rounded-lg bg-slate-900 border border-gray-700 outline-none mb-5"
+/>
+
+<button
+onclick="calculateAge()"
+class="w-full bg-yellow-500 text-black hover:bg-yellow-400 p-3 rounded-xl font-bold"
+>
+Calculate Age
+</button>
+
+<div
+id="resultBox"
+class="hidden mt-6 bg-slate-900 p-5 rounded-2xl"
+>
+
+<h3 class="text-xl font-bold mb-4 text-yellow-400">
+Your Age
+</h3>
+
+<p class="mb-2">
+Years:
+<span id="years"></span>
+</p>
+
+<p class="mb-2">
+Months:
+<span id="months"></span>
+</p>
+
+<p class="mb-2">
+Days:
+<span id="days"></span>
+</p>
+
+<p class="mt-4 text-green-400 font-bold">
+Total Days:
+<span id="totalDays"></span>
+</p>
+
+</div>
+
+</div>
+
+<div class="bg-slate-800 mt-6 p-5 rounded-2xl text-center text-gray-400">
+Adsterra Ad Space
+</div>
+
+</div>
+
+<script>
+
+function calculateAge(){
+
+const dob =
+document.getElementById("dob").value;
+
+if(!dob){
+alert("Please select DOB");
+return;
+}
+
+const birthDate = new Date(dob);
+
+const today = new Date();
+
+let years =
+today.getFullYear() - birthDate.getFullYear();
+
+let months =
+today.getMonth() - birthDate.getMonth();
+
+let days =
+today.getDate() - birthDate.getDate();
+
+if(days < 0){
+
+months--;
+
+const prevMonth =
+new Date(
+today.getFullYear(),
+today.getMonth(),
+0
+).getDate();
+
+days += prevMonth;
+
+}
+
+if(months < 0){
+
+years--;
+months += 12;
+
+}
+
+const diff =
+today - birthDate;
+
+const totalDays =
+Math.floor(
+diff / (1000 * 60 * 60 * 24)
+);
+
+document.getElementById("resultBox")
+.classList.remove("hidden");
+
+document.getElementById("years")
+.innerText = years;
+
+document.getElementById("months")
+.innerText = months;
+
+document.getElementById("days")
+.innerText = days;
+
+document.getElementById("totalDays")
+.innerText = totalDays;
+
+}
+
+</script>
+
+</body>
+</html>
