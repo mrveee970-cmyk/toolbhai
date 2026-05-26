@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ToolBhai - Image Compressor</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+background:#0f172a;
+font-family:Arial,sans-serif;
+color:white;
+}
+</style>
+
+</head>
+
+<body class="min-h-screen">
+
+<header class="p-4 border-b border-gray-700 flex justify-between items-center">
+
+<h1 class="text-2xl font-bold text-orange-400">
+ToolBhai
+</h1>
+
+<a href="index.html" class="bg-orange-600 px-4 py-2 rounded-lg">
+Home
+</a>
+
+</header>
+
+<div class="max-w-md mx-auto p-4">
+
+<h2 class="text-3xl font-bold mt-6 mb-2">
+Image Compressor
+</h2>
+
+<p class="text-gray-400 mb-6">
+Compress images instantly in browser.
+</p>
+
+<div class="bg-slate-800 p-5 rounded-2xl">
+
+<input
+type="file"
+id="imageInput"
+accept="image/*"
+class="w-full mb-4"
+/>
+
+<label class="block mb-2">
+Compression Quality:
+<span id="qualityValue">70</span>%
+</label>
+
+<input
+type="range"
+id="qualitySlider"
+min="10"
+max="100"
+value="70"
+class="w-full mb-5"
+/>
+
+<button
+onclick="compressImage()"
+class="w-full bg-orange-600 hover:bg-orange-700 p-3 rounded-xl font-bold"
+>
+Compress Image
+</button>
+
+<div class="mt-6 hidden" id="previewSection">
+
+<img
+id="previewImage"
+class="rounded-xl w-full mb-4"
+/>
+
+<p class="mb-2 text-sm text-gray-300">
+Original Size:
+<span id="originalSize"></span>
+</p>
+
+<p class="mb-4 text-sm text-green-400">
+Compressed Size:
+<span id="compressedSize"></span>
+</p>
+
+<a
+id="downloadBtn"
+class="block text-center bg-green-600 hover:bg-green-700 p-3 rounded-xl font-bold"
+download="compressed-image.jpg"
+>
+Download Image
+</a>
+
+</div>
+
+</div>
+
+<div class="bg-slate-800 mt-6 p-5 rounded-2xl text-center text-gray-400">
+Adsterra Ad Space
+</div>
+
+</div>
+
+<script>
+
+const qualitySlider =
+document.getElementById("qualitySlider");
+
+const qualityValue =
+document.getElementById("qualityValue");
+
+qualitySlider.addEventListener("input",()=>{
+qualityValue.innerText = qualitySlider.value;
+});
+
+function formatBytes(bytes){
+
+if(bytes < 1024) return bytes + " B";
+
+else if(bytes < 1048576)
+return (bytes / 1024).toFixed(2) + " KB";
+
+else
+return (bytes / 1048576).toFixed(2) + " MB";
+
+}
+
+function compressImage(){
+
+const file =
+document.getElementById("imageInput").files[0];
+
+if(!file){
+alert("Please select image");
+return;
+}
+
+const quality =
+qualitySlider.value / 100;
+
+const reader = new FileReader();
+
+reader.readAsDataURL(file);
+
+reader.onload = function(event){
+
+const img = new Image();
+
+img.src = event.target.result;
+
+img.onload = function(){
+
+const canvas =
+document.createElement("canvas");
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width = img.width;
+canvas.height = img.height;
+
+ctx.drawImage(img,0,0);
+
+canvas.toBlob(function(blob){
+
+const compressedUrl =
+URL.createObjectURL(blob);
+
+document.getElementById("previewSection")
+.classList.remove("hidden");
+
+document.getElementById("previewImage")
+.src = compressedUrl;
+
+document.getElementById("originalSize")
+.innerText = formatBytes(file.size);
+
+document.getElementById("compressedSize")
+.innerText = formatBytes(blob.size);
+
+const downloadBtn =
+document.getElementById("downloadBtn");
+
+downloadBtn.href = compressedUrl;
+
+},"image/jpeg",quality);
+
+};
+
+};
+
+}
+
+</script>
+
+</body>
+</html>
